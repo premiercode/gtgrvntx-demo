@@ -568,5 +568,35 @@
       <p>Design preview by Premier Code Inc.</p>
     </div>
   </footer>
-<!-- SWITCHER -->
+<!-- REMOVE AT LAUNCH: option switcher -->
+<!-- Copy this block unchanged to the end of <body> on every option page, just before </body>.
+     Per page, move aria-current="page" and the "on" class to that page's own link. Change nothing else.
+     Links are relative to option-a/, option-b/ and option-c/ folders (one level below the site root). -->
+<style class="pv-style">
+  html { scroll-padding-bottom: 6rem; }
+  footer, .site-footer, body > :last-of-type:not(script):not(nav) { padding-bottom: max(env(safe-area-inset-bottom), 5rem); }
+  .pv-switch {
+    position: fixed; left: 8px; bottom: 8px; z-index: 9999;
+    display: flex; gap: 2px; padding: 3px;
+    background: #fff; border: 1px solid #c8ccd2; border-radius: 10px;
+    box-shadow: 0 4px 18px rgba(0,0,0,.28);
+    font: 600 14px/1.2 system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+  .pv-switch a {
+    display: flex; align-items: center; justify-content: center;
+    min-height: 44px; padding: 0 14px; border-radius: 7px;
+    color: #111; background: transparent; text-decoration: none; white-space: nowrap;
+  }
+  .pv-switch a:hover { background: #eceef1; }
+  .pv-switch a.on { color: #fff; background: #111; }
+  .pv-switch a:focus-visible { outline: 3px solid #1a73e8; outline-offset: 1px; }
+  @media (max-width: 420px) { .pv-switch a { padding: 0 11px; font-size: 13px; } }
+  @media print { .pv-switch { display: none; } }
+</style>
+<nav class="pv-switch" aria-label="Design options">
+  <a href="../option-a/" class="on" aria-current="page">Option A</a>
+  <a href="../option-b/">Option B</a>
+  <a href="../option-c/">Option C</a>
+</nav>
+<!-- /REMOVE AT LAUNCH -->
 </body></html>
