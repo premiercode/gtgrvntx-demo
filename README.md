@@ -31,7 +31,8 @@ The root page (`/`) redirects to Option A.
 Also confirm before launch (not shown on the preview, needed for the full site):
 - Sample units, nightly rates, sale prices and the Outdoorsy 4.9 / 150+ reviews rating are as of Nov 8, 2026 and change.
 - Permission to reuse every photo; all images come from the client's own site and Outdoorsy listings.
-- Shop hours, one cancellation policy (three versions exist today), mobile repair area, delivery and setup offer, public email.
+- Shop hours, one cancellation policy (three versions exist today), delivery and setup offer, public email.
+- Mobile RV repair is left off the preview on purpose (owner decision). Confirm with the client before adding it back.
 
 ## Remove at launch
 
