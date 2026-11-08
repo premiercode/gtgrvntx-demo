@@ -20,6 +20,8 @@
   <script src="main.js" defer></script>
 </head>
 <body>
+<!-- REMOVE AT LAUNCH with the switcher: display:contents wrapper so the switcher\'s footer padding (body > :last-of-type) lands only on the footer -->
+<div class="pv-flow" style="display:contents">
   <a class="skip-link" href="#main">Skip to content</a>
 
   <div class="preview-bar" role="note">
@@ -532,7 +534,8 @@
     </section>
   </main>
 
-  <footer class="site-footer">
+  </div><!-- /pv-flow -->
+<footer class="site-footer">
     <div class="container footer__grid">
       <div class="footer__brand">
         <p class="brand brand--footer"><span class="brand__gtg">GTG RV</span><span class="brand__rest">Repair &amp; Rentals</span></p>
