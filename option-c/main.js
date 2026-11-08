@@ -34,4 +34,24 @@
       }
     });
   }
+
+  // Pause control for the ticker and sticker (WCAG 2.2.2). Shown only when motion is allowed.
+  var toggle = document.querySelector(".motion-toggle");
+  if (toggle && window.matchMedia("(prefers-reduced-motion: no-preference)").matches) {
+    var root = document.documentElement;
+    var setPaused = function (p) {
+      root.classList.toggle("motion-paused", p);
+      toggle.setAttribute("aria-pressed", p ? "true" : "false");
+      toggle.textContent = p ? "Play motion" : "Pause motion";
+    };
+    var saved = false;
+    try { saved = window.localStorage.getItem("gtg-motion-paused") === "1"; } catch (e) {}
+    setPaused(saved);
+    toggle.hidden = false;
+    toggle.addEventListener("click", function () {
+      var p = !root.classList.contains("motion-paused");
+      setPaused(p);
+      try { window.localStorage.setItem("gtg-motion-paused", p ? "1" : "0"); } catch (e) {}
+    });
+  }
 })();

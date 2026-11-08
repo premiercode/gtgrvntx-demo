@@ -259,8 +259,9 @@
     padding: .55rem .2rem .65rem; color: var(--night);
   }
   .postcard figcaption .hand { font-size: clamp(1rem, 1.6vw, 1.35rem); color: var(--burnt); }
-  .postcard figcaption .tiny { font-size: .78rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--ink-2); }
+  .postcard figcaption .tiny { white-space: nowrap; font-size: .78rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--ink-2); }
 
+  @media (max-width: 479px) { .postcard figcaption .tiny { font-size: .7rem; letter-spacing: .06em; } .postcard figcaption { gap: .3rem .6rem; } }
   .sticker {
     position: absolute; right: -2%; top: -4%; width: clamp(110px, 14vw, 190px); aspect-ratio: 1;
     border-radius: 50%; background: var(--sun); color: var(--night);
@@ -533,7 +534,7 @@
   .greetings__card img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 3px; }
   .greetings__overlay {
     position: absolute; left: .8rem; right: .8rem; bottom: .8rem; padding: 3rem 1rem 1rem; border-radius: 0 0 3px 3px;
-    background: linear-gradient(180deg, transparent, rgba(28, 26, 63, .88) 55%);
+    background: linear-gradient(180deg, transparent, rgba(28, 26, 63, .9) 30%);
     display: grid; justify-items: start;
   }
   .greetings__from { font-family: var(--font-display); font-weight: 700; text-transform: uppercase; letter-spacing: .18em; color: var(--cream); font-size: clamp(.8rem, 1.1vw, 1rem); margin-bottom: .3rem; }
@@ -704,3 +705,18 @@
   *, *::before, *::after { animation: none !important; transition: none !important; }
   .route__rv { transform: translateX(calc(100cqw - 56px)); }
 }
+
+/* Accessibility fixes (WCAG 2.2 AA audit) */
+html { scroll-padding-top: 8rem; }                      /* 2.4.11: sticky masthead never covers focus */
+@media (min-width: 900px) { html { scroll-padding-top: 5.5rem; } }
+.req { font-weight: 400; font-size: .85em; opacity: .85; } /* 3.3.2: visible required marker */
+.motion-toggle {                                         /* 2.2.2: pause the ticker and sticker */
+  display: block; position: relative; z-index: 2; margin: 0 var(--gutter) .6rem auto;
+  min-height: 32px; padding: .3rem .9rem; border-radius: 999px; cursor: pointer;
+  font: 700 .8rem/1 var(--font-body); color: var(--cream); background: rgba(28, 26, 63, .6);
+  border: 1.5px solid var(--cream);
+}
+.motion-toggle[hidden] { display: none; }
+.motion-toggle:hover { background: var(--cream); color: var(--night); }
+.motion-paused .ticker__track, .motion-paused .sticker__ring { animation-play-state: paused !important; }
+@media (max-width: 360px) { .nav ul { flex-wrap: wrap; min-width: 0; justify-content: flex-start; } .nav a { padding-inline: .45rem; } } /* 1.4.10 */

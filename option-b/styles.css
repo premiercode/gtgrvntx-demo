@@ -9,7 +9,7 @@
   --pine-900: #15291f;
   --pine-800: #1d3a2c;
   --pine-700: #2a4d3b;
-  --sage-600: #5b7a62;
+  --sage-600: #4a6a52; /* darkened for AA text contrast */
   --sage-300: #b9cbb4;
   --sage-100: #e3ebdf;
   --sky-700: #2f5e7a;
@@ -834,15 +834,15 @@ a { color: inherit; }
   font: inherit;
   color: var(--ink);
   background: var(--canvas);
-  border: 1.5px solid #c9bea5;
+  border: 1.5px solid var(--sage-600);
   border-radius: var(--radius-md);
   padding: 0.75rem 0.9rem;
   min-height: 48px;
   transition: border-color 200ms ease, box-shadow 200ms ease, background-color 200ms ease;
 }
 .field textarea { resize: vertical; min-height: 120px; }
-.field input::placeholder, .field textarea::placeholder { color: #7a8580; }
-.field input:hover, .field textarea:hover { border-color: var(--sage-600); }
+.field input::placeholder, .field textarea::placeholder { color: var(--ink-soft); }
+.field input:hover, .field textarea:hover { border-color: var(--pine-900); }
 .field input:focus-visible, .field textarea:focus-visible {
   outline: none;
   border-color: var(--sky-700);
@@ -866,14 +866,14 @@ fieldset.field { border: 0; padding: 0; margin: 0; }
   min-height: 44px;
   padding: 0 var(--s5);
   border-radius: 999px;
-  border: 1.5px solid #c9bea5;
+  border: 1.5px solid var(--sage-600);
   background: var(--canvas);
   font-size: var(--text-sm);
   font-weight: 600;
   color: var(--ink);
   transition: background-color 200ms ease, border-color 200ms ease, color 200ms ease;
 }
-.chip:hover span { border-color: var(--sage-600); }
+.chip:hover span { border-color: var(--pine-900); }
 .chip input:checked + span { background: var(--pine-800); border-color: var(--pine-800); color: #fff; }
 .chip input:focus-visible + span { outline: 3px solid var(--sky-700); outline-offset: 3px; }
 .hp {
@@ -986,7 +986,7 @@ fieldset.field { border: 0; padding: 0; margin: 0; }
   .js .reveal.reveal-delay { transition-delay: 150ms; }
   .js .reveal.is-visible { opacity: 1; transform: none; }
 
-  .arch-img { animation: drift 24s ease-in-out infinite alternate; transform-origin: 56% 55%; }
+  .arch-img { animation: drift 24s ease-in-out 1 both; transform-origin: 56% 55%; }
   @keyframes drift {
     from { transform: scale(1.06) translate3d(-1%, 0, 0); }
     to   { transform: scale(1.06) translate3d(1%, -0.5%, 0); }
@@ -1129,3 +1129,39 @@ fieldset.field { border: 0; padding: 0; margin: 0; }
 }
 .repair .mobile-card .eyebrow { color: var(--brick-700); }
 @media (max-width: 479px) { .services { padding: var(--s5) var(--s4); } }
+
+/* ===================== Review round 2 ===================== */
+.amp { font-family: var(--font-body); font-weight: 600; font-style: normal; font-size: 0.92em; }
+
+/* Logo: larger, seated in a quiet paper frame */
+.wordmark-logo {
+  width: auto;
+  height: 46px;
+  padding: 3px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: var(--shadow-soft);
+  box-sizing: content-box;
+}
+@media (min-width: 640px) { .wordmark-logo { width: auto; height: 52px; } }
+@media (min-width: 860px) {
+  .wordmark-logo { height: 62px; padding: 4px; }
+  .header-inner { min-height: 92px; }
+}
+
+/* Check circles on the pine band: sage fill, pine check */
+.repair .checks li::before {
+  background: var(--sage-300) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6 12.5l4 4 8-9' fill='none' stroke='%2315291f' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 12px no-repeat;
+}
+@media (min-width: 860px) { .wordmark-logo { height: 3.875rem; } .header-inner { min-height: 5.75rem; } }
+
+/* Accessibility fixes (WCAG 2.2 AA audit) */
+html { scroll-padding-top: 8rem; }                                  /* 2.4.11 sticky header */
+.repair .mobile-card :focus-visible { outline-color: var(--sky-700); } /* 2.4.7 focus on light card */
+.req { font-weight: 400; font-size: .9em; color: var(--ink-soft); }   /* 3.3.2 required marker */
+@media (max-width: 400px) { .site-nav ul { flex-wrap: wrap; row-gap: .25rem; } } /* 1.4.10 */
+@media (forced-colors: active) {
+  .chip input:checked + span { outline: 2px solid Highlight; outline-offset: 2px; }
+  .field input:focus-visible, .field textarea:focus-visible, .chip input:focus-visible + span { outline: 2px solid Highlight; outline-offset: 2px; }
+}
