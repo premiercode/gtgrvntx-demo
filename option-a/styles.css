@@ -48,6 +48,7 @@
 
   html { scroll-behavior: smooth; scroll-padding-top: 5.5rem; }
   @media (max-width: 899px) { html { scroll-padding-top: 7.5rem; } }
+  @media (max-width: 359px) { html { scroll-padding-top: 10rem; } }
   @media (min-width: 2400px) { html { font-size: 125%; } }
 
   body {

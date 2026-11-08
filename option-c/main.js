@@ -42,7 +42,6 @@
     var setPaused = function (p) {
       root.classList.toggle("motion-paused", p);
       toggle.setAttribute("aria-pressed", p ? "true" : "false");
-      toggle.textContent = p ? "Play motion" : "Pause motion";
     };
     var saved = false;
     try { saved = window.localStorage.getItem("gtg-motion-paused") === "1"; } catch (e) {}

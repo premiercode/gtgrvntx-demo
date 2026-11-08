@@ -986,7 +986,7 @@ fieldset.field { border: 0; padding: 0; margin: 0; }
   .js .reveal.reveal-delay { transition-delay: 150ms; }
   .js .reveal.is-visible { opacity: 1; transform: none; }
 
-  .arch-img { animation: drift 24s ease-in-out 1 both; transform-origin: 56% 55%; }
+  .arch-img { animation: drift 5s ease-in-out 1 both; transform-origin: 56% 55%; }
   @keyframes drift {
     from { transform: scale(1.06) translate3d(-1%, 0, 0); }
     to   { transform: scale(1.06) translate3d(1%, -0.5%, 0); }
@@ -1157,7 +1157,8 @@ fieldset.field { border: 0; padding: 0; margin: 0; }
 @media (min-width: 860px) { .wordmark-logo { height: 3.875rem; } .header-inner { min-height: 5.75rem; } }
 
 /* Accessibility fixes (WCAG 2.2 AA audit) */
-html { scroll-padding-top: 8rem; }                                  /* 2.4.11 sticky header */
+html { scroll-padding-top: 8rem; }
+@media (max-width: 400px) { html { scroll-padding-top: 10.5rem; } }                                  /* 2.4.11 sticky header */
 .repair .mobile-card :focus-visible { outline-color: var(--sky-700); } /* 2.4.7 focus on light card */
 .req { font-weight: 400; font-size: .9em; color: var(--ink-soft); }   /* 3.3.2 required marker */
 @media (max-width: 400px) { .site-nav ul { flex-wrap: wrap; row-gap: .25rem; } } /* 1.4.10 */

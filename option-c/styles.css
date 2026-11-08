@@ -719,4 +719,7 @@ html { scroll-padding-top: 8rem; }                      /* 2.4.11: sticky masthe
 .motion-toggle[hidden] { display: none; }
 .motion-toggle:hover { background: var(--cream); color: var(--night); }
 .motion-paused .ticker__track, .motion-paused .sticker__ring { animation-play-state: paused !important; }
-@media (max-width: 360px) { .nav ul { flex-wrap: wrap; min-width: 0; justify-content: flex-start; } .nav a { padding-inline: .45rem; } } /* 1.4.10 */
+@media (max-width: 360px) { html { scroll-padding-top: 10rem; } .nav ul { flex-wrap: wrap; min-width: 0; justify-content: flex-start; } .nav a { padding-inline: .45rem; } } /* 1.4.10, 2.4.11 */
+.motion-toggle[aria-pressed="true"] { background: var(--cream); color: var(--night); }  /* pressed = paused (4.1.2: fixed label) */
+.motion-toggle[aria-pressed="true"]::before { content: "\2713\00a0"; }
+html:not(.js) .ticker__track, html:not(.js) .sticker__ring { animation: none !important; } /* 2.2.2: no pause control without JS, so no motion */
